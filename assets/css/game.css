@@ -1,0 +1,17 @@
+/*! game.css v1.0.0 */
+
+/* ==========================================================================
+   CSS GAME, useless for the game itself as it is a canvas
+   ========================================================================== */
+html,
+body,
+canvas,
+#game-wrapper{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border:0;
+    overflow:hidden;
+}
