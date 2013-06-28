@@ -7,7 +7,9 @@ require.config({
         // Adfab components using createJS
         preloader: 'adfab/utils/preloader',
         button: 'adfab/components/button',
+        buttonImage: 'adfab/components/buttonImage',
         text: 'adfab/components/text',
+        sprite: 'adfab/components/sprite',
         
         // VIEWS
         introView: 'game/views/intro',
@@ -32,7 +34,6 @@ require(
             canv = document.createElement("canvas");
         VAR.CANVAS.WIDTH = container.offsetWidth;
         VAR.CANVAS.HEIGHT = container.offsetHeight;
-        console.log(container.offsetHeight);
         // Add canvas elements to fit full container
         canv.setAttribute('width', VAR.CANVAS.WIDTH);
         canv.setAttribute('height', VAR.CANVAS.HEIGHT);
@@ -47,7 +48,8 @@ require(
             function (e)
             { // complete event
                 Game.initialize();
-            }
+            },
+            true
         );
     }
 );

@@ -10,8 +10,8 @@
  */
 
 define(
-    ['VAR', 'introView', "text", 'createjs'],
-    function (VAR, introView, _Text)
+    ['VAR', 'introView', "text", 'sprite', 'createjs'],
+    function (VAR, introView, _Text, Sprite)
     {
         var canvas,
             stage,
@@ -21,6 +21,7 @@ define(
             STAGE_WIDTH = window.innerWidth,
             STAGE_HEIGHT = window.innerHeight,
             text = null,
+            _sprite = null,
             game = {
                 canvas : canvas,
                 stage : stage,
@@ -61,16 +62,13 @@ define(
             containerGame = new createjs.Container();
             stage.addChild(containerGame);
             
-            var textSise = 100;
-            text = new _Text(
-                "You think this is a Game!",
-                (VAR.CANVAS.WIDTH * .5) - (textSise * .5),
-                (VAR.CANVAS.HEIGHT * .5) - (textSise * .5),
-                textSise,
-                textSise,
-                "700 small-caps 20px/2 Arial, sans-serif",
-                "#000",
-                "center"
+            _sprite = new Sprite(
+                (VAR.CANVAS.WIDTH * .5),
+                (VAR.CANVAS.HEIGHT * .5),
+                50,
+                50,
+                VAR.PATH_TO_ASSETS + "images/sprite_test.png",
+                4
             );
             
             // GAME LOOP
@@ -83,7 +81,7 @@ define(
          */
         game.update = function ()
         {
-            
+            _sprite.move(_sprite.x + 1, 0);
         };
         
         return game;

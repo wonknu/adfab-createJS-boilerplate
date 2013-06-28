@@ -10,8 +10,8 @@
  */
 
 define(
-    ['createjs'],
-    function ()
+    ["VAR", "text", "createjs"],
+    function (VAR, _Text)
     {
         /**
          * Create a button
@@ -41,16 +41,24 @@ define(
          */
         var addText = function (text, style, color, textAlign)
         {
-            this.text = new createjs.Text(text, style, color);
-            
-            this.text.lineWidth = (this.width - (this.padding * 2));
-            this.text.x = this.padding;
+            var _x = this.padding,
+            textAlign = textAlign || "left";
             if(textAlign !== null && textAlign !== undefined) {
-                this.text.textAlign = textAlign;
-                if(textAlign == "center") this.text.x = (this.width * .5);
-                if(textAlign == "right") this.text.x = (this.width - this.padding);
+                if(textAlign == "center") _x = (this.width * .5);
+                if(textAlign == "right") _x = (this.width - this.padding);
             }
-            this.text.textAlign = textAlign;
+            this.text = new _Text(
+                text,
+                _x,
+                (VAR.CANVAS.HEIGHT * .5) - (this.height * .5),
+                this.width,
+                this.height,
+                style,
+                color,
+                textAlign,
+                false
+            );
+            
             return this;
         };
         
@@ -61,14 +69,14 @@ define(
         {
             stage.addChild(this.container);
             if(this.shape !== null) this.container.addChild(this.shape);
-            if(this.text !== null) this.container.addChild(this.text);
+            if(this.text.text !== null) this.container.addChild(this.text.text);
             stage.update();
             
             return this;
         };
         
         /**
-         * Display Button
+         * Remove Button
          */
         var remove = function ()
         {

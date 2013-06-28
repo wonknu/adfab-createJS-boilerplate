@@ -10,8 +10,8 @@
  */
 
 define(
-    ['VAR', 'button'],
-    function (VAR, button)
+    ['VAR', 'buttonImage'],
+    function (VAR, buttonImage)
     {
         var buttonPlay = null;
         
@@ -20,17 +20,12 @@ define(
          */
         var render = function ()
         {
-            var btnWidth = 100,
-            btnHeight = 25;
-            
-            buttonPlay = new button(
-                (VAR.CANVAS.WIDTH * .5) - (btnWidth * .5),
-                (VAR.CANVAS.HEIGHT * .5) - (btnHeight * .5),
-                btnWidth,
-                btnHeight,
-                "#000"
+            buttonPlay = new buttonImage(
+                (VAR.CANVAS.WIDTH * .5),
+                (VAR.CANVAS.HEIGHT * .5),
+                IMGS.btn_play
             );
-            buttonPlay.addText("Play", "700 small-caps 20px/2 Arial, sans-serif", "#FFF", "center").display();
+            buttonPlay.display();
             
             buttonPlay.container.onPress = function (evt)
             {

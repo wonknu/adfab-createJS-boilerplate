@@ -13,7 +13,7 @@ define(
     ['VAR', 'createjs'],
     function (VAR)
     {
-        var cb_progress, cb_complete, debug;
+        var cb_progress, cb_complete, _debug = false;
         window.IMGS = [];
         
         /**
@@ -27,8 +27,8 @@ define(
                 throw "No images to load and neither a callback, the preloader won't ever fired that it has done loading assets'";
             else if(VAR.manifest.length < 1 && typeof complete !== 'undefined' && complete !== null)
                 complete();
-            
-            debug = debug || false;
+            window.IMGS = {};
+            _debug = debug || false;
             cb_progress = progress || null;
             cb_complete = complete || null;
             preloader = new createjs.LoadQueue();
@@ -44,7 +44,7 @@ define(
          */
         var handleProgress = function (e)
         {
-            if(debug) console.log('Loading : ' + e.loaded);
+            if(_debug) console.log('Loading : ' + e.loaded);
             if(cb_progress !== null) cb_progress(e);
         };
         
@@ -54,7 +54,7 @@ define(
          */
         var handleComplete = function (e)
         {
-            if(debug) console.log('completed loading assets');
+            if(_debug) console.log('completed loading assets');
             if(cb_complete !== null) cb_complete(e);
         };
         

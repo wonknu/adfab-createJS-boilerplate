@@ -32,7 +32,7 @@ define(
                 if(this.textAlign === "center") this.text.x = (this.width * .5);
                 if(this.textAlign === "right") this.text.x = (this.width - this.padding);
             }
-            
+            if(!this.useOwnContaier) return this;
             stage.addChild(this.container);
             this.container.addChild(this.text);
             stage.update();
@@ -44,7 +44,7 @@ define(
          */
         var setText = function (text)
         {
-			if(text != null && text != undefined) this.text.text = text;
+            if(text != null && text != undefined) this.text.text = text;
             return this.text.text;
         };
         
@@ -66,8 +66,9 @@ define(
          * @param {String} textAlign, "start", "end", "left", "right", and "center", default is "left"
          * @param {Object} container, new createjs.Container()
          * @param {Int} padding
+         * @param {Boolean} useOwnContaier, false => won't add itself to stage, true => the opposite
          */
-        return function (content, x, y, width, height, style, color, textAlign, container, padding)
+        return function (content, x, y, width, height, style, color, textAlign, container, padding, useOwnContaier)
         {
             this.x = x || 0;
             this.y = y || 0;
@@ -83,6 +84,7 @@ define(
             this.remove = remove;
             this.padding = padding || 5;
             this.text = null;
+            this.useOwnContaier = useOwnContaier || true;
             
             this.create(); // Call constructor
             return this;
