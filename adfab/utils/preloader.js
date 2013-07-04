@@ -44,7 +44,11 @@ define(
          */
         var handleProgress = function (e)
         {
-            if(_debug) console.log('Loading : ' + e.loaded);
+            if(_debug && typeof console !== "undefined" && console !== null) {
+                if(typeof console.clear !== "undefined" && console.clear !== null )
+                    console.clear();
+                console.log('Loading : ' + e.loaded);
+            }
             if(cb_progress !== null) cb_progress(e);
         };
         
@@ -54,7 +58,11 @@ define(
          */
         var handleComplete = function (e)
         {
-            if(_debug) console.log('completed loading assets');
+            if(_debug && typeof console !== "undefined" && console !== null) {
+                if(typeof console.clear !== "undefined" && console.clear !== null )
+                    console.clear();
+                console.log('completed loading assets');
+            }
             if(cb_complete !== null) cb_complete(e);
         };
         

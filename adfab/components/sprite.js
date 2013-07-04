@@ -14,6 +14,7 @@ define(
     function (VAR)
     {
         var currentImage = 0, customContainer = null;
+        
         /**
          * Create a button with an image
          */
@@ -24,8 +25,7 @@ define(
             this.image.onload = function()
             {
                 _this.spriteSheet = new createjs.SpriteSheet({
-                    // image to use
-                    images: [_this.image], 
+                    images: [_this.image], // image to use
                     // width, height & registration point of each sprite
                     frames: {width : _this.width, height : _this.height}, 
                     animations: {    
@@ -43,13 +43,15 @@ define(
                 stage.addChild(_this.bmpAnimation);
                 
                 _this.move(_this.x, _this.y);
+                
+                stage.dispatchEvent(VAR.EVENTS.BANDIT_READY);
             };
             this.image.onerror = function()
             {
                 throw "Error Image : " + this.pathToTimage + " could not load!";
             };
             
-            this.image.src = VAR.PATH_TO_ASSETS + "images/sprite_test.png";
+            this.image.src = this.pathToTimage;
             
             return this;
         };

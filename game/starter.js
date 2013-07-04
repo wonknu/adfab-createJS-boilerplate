@@ -11,6 +11,9 @@ require.config({
         text: 'adfab/components/text',
         sprite: 'adfab/components/sprite',
         
+        // Game own custom components
+        scrollerItem: 'game/components/scroll-item',
+        
         // VIEWS
         introView: 'game/views/intro',
         game: 'game/views/game',
