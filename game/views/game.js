@@ -26,7 +26,7 @@ define(
             gameIsRunnig = false,
             scrolls = [],
             currentScroll = null,
-            banditWidth = 302, banditHeight = 245,
+            banditWidth = 302, banditHeight = 187,
             game = {
                 canvas : canvas,
                 stage : stage,
@@ -74,7 +74,7 @@ define(
                 banditWidth,
                 banditHeight,
                 VAR.PATH_TO_ASSETS + "images/bandit.png",
-                4
+                7
             );
             
             // Time to add game UI
@@ -127,22 +127,22 @@ define(
             var yellowBackground = new createjs.Graphics(),
                 s;
             yellowBackground
-            .beginFill("#343434")
-            .drawRect((VAR.CANVAS.WIDTH * .5) - (banditWidth * .45), (VAR.CANVAS.HEIGHT * .5) - (banditHeight * .4), banditWidth * .8, banditHeight * .8);
+            .beginFill("#3a3b4d")
+            .drawRect((VAR.CANVAS.WIDTH * .5) - (banditWidth * .5), (VAR.CANVAS.HEIGHT * .5) - (banditHeight * .3), banditWidth * .8, banditHeight * .8);
             s = new createjs.Shape(yellowBackground);
             stage.addChild(s);
         };
         
         game.addScrollerItem = function ()
         {
-            var fixPositionX = [ 21, 101, 181 ],
+            var fixPositionX = [ 10, 90, 170 ],
                 fixPositionY = 55,
                 i;
             for (i = 0; i < fixPositionX.length; i++) {
                 scrolls.push(new ScrollerItem(
                     (VAR.CANVAS.WIDTH * .5) - (banditWidth * .5) + fixPositionX[i],
                     (VAR.CANVAS.HEIGHT * .5) - (banditHeight * .5) + fixPositionY,
-                    Math.round((30 - (i * 10)) + Math.random() * 50),
+                    Math.round((30 - (i * 10)) + Math.random() * 30),
                     [ IMGS.bonus_0, IMGS.bonus_1, IMGS.bonus_2, IMGS.bonus_3, IMGS.bonus_4 ]
                 ));
             };

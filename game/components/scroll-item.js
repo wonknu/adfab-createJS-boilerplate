@@ -63,7 +63,7 @@ define(
                     this.arrBitmap[i].y += this.arrBitmap[i].image.height * length;
                 this.arrBitmap[i].y -= this.speed;
             };
-            if(decreasethisSpeed) this.speed *= .95;
+            if(decreasethisSpeed) this.speed *= .9;
             
             return true;
         };
